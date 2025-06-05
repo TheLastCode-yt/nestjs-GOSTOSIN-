@@ -1,0 +1,30 @@
+### Criar um post
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "title": "Meu primeiro post",
+  "content": "Conteúdo do post aqui",
+  "authorId": 2
+}
+
+### Buscar todos os posts
+GET http://localhost:3000/posts
+
+### Buscar post por ID
+GET http://localhost:3000/posts/2
+
+### Buscar todos os posts de um autor
+GET http://localhost:3000/posts/author/2
+
+### Atualizar um post
+PATCH http://localhost:3000/posts/3
+Content-Type: application/json
+
+{
+  "title": "Post atualizado",
+  "content": "Novo conteúdo"
+}
+
+### Deletar um post
+DELETE http://localhost:3000/posts/3

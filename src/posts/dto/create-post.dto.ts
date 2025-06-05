@@ -6,7 +6,4 @@ export class CreatePostDto {
   @IsOptional()
   @IsString()
   content?: string;
-
-  @IsNumber({}, { message: 'authorId deve ser um número' })
-  authorId: number;
 }

@@ -11,12 +11,15 @@ import { CreatePostDto } from './dto/create-post.dto';
 export class PostsService {
   constructor(private prisma: PrismaService) {}
 
-  async createPost(data: CreatePostDto): Promise<Post> {
+  async createPost(data: {
+    title: string;
+    content?: string;
+    authorId: number;
+  }): Promise<Post> {
     try {
       return await this.prisma.post.create({ data });
     } catch (error) {
       if (error.code === 'P2003') {
-        // Chave estrangeira inválida
         throw new BadRequestException('Autor não encontrado');
       }
       throw new BadRequestException('Erro ao criar post');
@@ -86,7 +89,11 @@ export class PostsService {
 
   async deletePost(id: number) {
     try {
-      return await this.prisma.post.delete({ where: { id } });
+      await this.prisma.post.delete({ where: { id } });
+      return {
+        message: `Post com ID ${id} deletado com sucesso`,
+        statusCode: 200,
+      };
     } catch (error) {
       if (error.code === 'P2025') {
         throw new NotFoundException(`Post com ID ${id} nao encontrado`);

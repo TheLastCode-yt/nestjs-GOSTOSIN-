@@ -12,7 +12,7 @@ import { UsersService } from './users.service';
 import { User as UserModel } from '@prisma/client';
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
-import { OwnershipGuard } from 'src/common/guards/ownership.guard';
+import { UserOwnershipGuard } from 'src/common/guards/user-ownership.guard';
 
 @Controller('users')
 export class UsersController {
@@ -23,7 +23,7 @@ export class UsersController {
     return this.usersService.createUser(userData);
   }
 
-  @UseGuards(JwtAuthGuard, OwnershipGuard)
+  @UseGuards(JwtAuthGuard, UserOwnershipGuard)
   @Put(':id')
   async updateUser(
     @Param('id') id: string,
@@ -32,7 +32,7 @@ export class UsersController {
     return this.usersService.updateUser({ id: parseInt(id) }, userData);
   }
 
-  @UseGuards(JwtAuthGuard, OwnershipGuard)
+  @UseGuards(JwtAuthGuard, UserOwnershipGuard)
   @Delete(':id')
   async deleteUser(@Param('id') id: string) {
     return this.usersService.deleteUser({ id: parseInt(id) });

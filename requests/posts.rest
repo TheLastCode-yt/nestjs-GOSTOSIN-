@@ -1,6 +1,10 @@
 ### Criar um post
+@baseUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9AZXhhbXBsZS5jb20iLCJzdWIiOjcsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ5MTY1MTU3LCJleHAiOjE3NDkyNTE1NTd9.QCdvEX_7Fz0mD78XlmPyUEvY3m4LV2qYS-M6sy2Wb84
+
 POST http://localhost:3000/posts
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "title": "Meu primeiro post",

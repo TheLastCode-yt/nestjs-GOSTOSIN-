@@ -1,4 +1,4 @@
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9AZXhhbXBsZS5jb20iLCJzdWIiOjcsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ5MTYxMDk3LCJleHAiOjE3NDkyNDc0OTd9.pF4ZDZ8H2Ydq522hCFG-ytCgylrOA9cx49UKWnApWn0
+from ./.env.http import { token, baseUrl}
 
 ### 🟢 Criar novo usuário
 POST http://localhost:3000/users
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 
 ### 🟡 Atualizar usuário (ex: id 1)
-PUT http://localhost:3000/users/7
+PUT {{baseUrl}}/users/7
 Content-Type: application/json
 Authorization: {{token}}
 

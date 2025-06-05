@@ -6,14 +6,14 @@ import {
 } from '@nestjs/common';
 
 @Injectable()
-export class OwnershipGuard implements CanActivate {
+export class UserOwnershipGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest();
     const user = request.user;
-    const paramId = request.params.id;
+    const paramId = parseInt(request.params.id);
 
-    if (String(user.userId) !== String(paramId)) {
-      throw new ForbiddenException('Você não tem permissão');
+    if (user.userId !== paramId) {
+      throw new ForbiddenException('Você só pode gerenciar sua própria conta');
     }
 
     return true;

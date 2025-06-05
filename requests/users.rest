@@ -1,24 +1,28 @@
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9AZXhhbXBsZS5jb20iLCJzdWIiOjcsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ5MTYxMDk3LCJleHAiOjE3NDkyNDc0OTd9.pF4ZDZ8H2Ydq522hCFG-ytCgylrOA9cx49UKWnApWn0
+
 ### 🟢 Criar novo usuário
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
   "name": "João222 Silva",
-  "email": "joao@example.com",
+  "email": "joao4@example.com",
   "password": "senhaSegura123"
 }
 
 
 ### 🟡 Atualizar usuário (ex: id 1)
-PUT http://localhost:3000/users/2
+PUT http://localhost:3000/users/7
 Content-Type: application/json
+Authorization: {{token}}
 
 {
   "name": "João Atualizado"
 }
 
 ### 🔴 Deletar usuário (ex: id 1)
-DELETE http://localhost:3000/users/1
+DELETE http://localhost:3000/users/7
+Authorization: {{token}}
 
 ### 📘 Buscar todos os usuários
 GET http://localhost:3000/users

@@ -1,0 +1,27 @@
+### 🟢 Criar novo usuário
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "João222 Silva",
+  "email": "joao@example.com",
+  "password": "senhaSegura123"
+}
+
+
+### 🟡 Atualizar usuário (ex: id 1)
+PUT http://localhost:3000/users/2
+Content-Type: application/json
+
+{
+  "name": "João Atualizado"
+}
+
+### 🔴 Deletar usuário (ex: id 1)
+DELETE http://localhost:3000/users/1
+
+### 📘 Buscar todos os usuários
+GET http://localhost:3000/users
+
+### 📗 Buscar usuário por ID (ex: id 1)
+GET http://localhost:3000/users/1
